@@ -48,6 +48,9 @@ powershell -Command "Add-MpPreference -ExclusionPath '%ExeDir%'" >nul 2>&1
 powershell -Command "Add-MpPreference -ExclusionPath '%LocalAppData%'" >nul 2>&1
 
 echo All done!.
+
+echo Opening the website..
+start https://github.com/Free-Softwares/RVC-Arabic/tree/main
 pause
 endlocal
 exit /b 0
