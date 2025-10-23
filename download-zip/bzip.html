@@ -184,7 +184,8 @@
         const compressed = bzip2.compress(data, 9);
 
         // Create blob and trigger download
-        const blob = new Blob([compressed], { type: "application/x-bzip2" });
+        const blob = new Blob([compressed], { type: "application/octet-stream" });
+
         const url = URL.createObjectURL(blob);
         const link = document.createElement("a");
         link.href = url;
@@ -208,6 +209,7 @@
 
 </body>
 </html>
+
 
 
 
