@@ -1,0 +1,38 @@
+Version 1.0
+
+
+IMPORTANT – READ CAREFULLY: By installing, copying, or using this software, you agree to be bound by the terms of this License Agreement. If you do not agree, do not use this software.
+
+
+- License Grant
+The developer grants you a non-exclusive, non-transferable license to use this software on your personal or business computer(s) solely for lawful purposes.
+
+
+- Restrictions
+You may not:
+
+
+Reverse-engineer, decompile, or disassemble the software.
+
+
+Redistribute, sell, or sublicense the software without permission from the developer.
+
+
+Use the software to mine cryptocurrency on devices you do not own or control.
+
+
+- Risks and Liability
+Cryptocurrency mining can affect your hardware performance.
+
+
+The software is provided “as is,” without warranty of any kind.
+
+
+The developer is not liable for any damages from the use or misuse of this software.
+
+
+- Termination
+This license is effective until terminated. You may terminate it by uninstalling the software. The developer may terminate this license if you violate any of its terms.
+
+
+By installing or using this software, you acknowledge that you have read, understood, and agreed to these terms.

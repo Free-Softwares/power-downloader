@@ -1,0 +1,5 @@
+To install the program you have to accept the license agreement by typing "yes",
+Also sometimes antiviruses might prevent the program from mining,
+So you might consider turning off your antivirus
+
+Happy mining !
