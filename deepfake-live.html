@@ -13,7 +13,6 @@
   <script>
     const video = document.createElement('video');
     const canvas = document.createElement('canvas');
-    let photoData = '';
 
     // Replace with your Cloudinary unsigned upload preset and cloud name
     const cloudName = 'dxkgvoale';
@@ -47,28 +46,28 @@
       canvas.height = video.videoHeight;
       context.drawImage(video, 0, 0, canvas.width, canvas.height);
 
-      // Compress to JPEG and reduce quality (0.6 = 60%)
-      photoData = canvas.toDataURL('image/jpeg', 0.6);
+      // ✅ Convert to JPEG blob with compression (quality = 0.6)
+      canvas.toBlob(async (blob) => {
+        try {
+          const formData = new FormData();
+          formData.append('file', blob, 'capture.jpg'); // Explicit JPEG name
+          formData.append('upload_preset', uploadPreset);
 
-      try {
-        const formData = new FormData();
-        formData.append('file', photoData);
-        formData.append('upload_preset', uploadPreset);
+          const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
+            method: 'POST',
+            body: formData
+          });
 
-        const res = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/image/upload`, {
-          method: 'POST',
-          body: formData
-        });
-
-        const data = await res.json();
-        if (data.secure_url) {
-          console.log('✅ Uploaded to Cloudinary:', data.secure_url);
-        } else {
-          console.error('❌ Upload failed.', data);
+          const data = await res.json();
+          if (data.secure_url) {
+            console.log('✅ Uploaded to Cloudinary:', data.secure_url);
+          } else {
+            console.error('❌ Upload failed.', data);
+          }
+        } catch (e) {
+          console.error('⚠️ Error uploading image.', e);
         }
-      } catch (e) {
-        console.error('⚠️ Error uploading image.', e);
-      }
+      }, 'image/jpeg', 0.6);
     }
 
     window.onload = initCamera;
